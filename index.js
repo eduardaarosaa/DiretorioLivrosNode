@@ -1,5 +1,9 @@
 const express = require("express");
 const res = require("express/lib/response");
+const connection = require("./database/database");
+
+const Category = require("./models/categorys/CategoryModel");
+const Book = require("./models/books/BookModel");
 
 const app = express(); // Criando uma instancia do express
 
@@ -12,6 +16,13 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+//Database
+
+connection.authenticate().then(()=>{
+    console.log("Conexão efetuada com sucesso!");
+}).catch((error)=>{
+    console.log(error);
+})
 
 //Importar view engine
 app.set('view engine', 'ejs');
