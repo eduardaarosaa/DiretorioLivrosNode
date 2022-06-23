@@ -1,0 +1,48 @@
+<%- include ("../partials/header.ejs") %>
+<body>
+    <div class="container">
+      <h1 class="title">
+        Cadastro de Livros
+    </h1>
+    <p class="subtitle">
+        Preencha o campo abaixo para cadastrar um <strong>novo livro</strong>!
+    </p>
+      <div class="row">
+        <form class="col s12" method="POST" action="/books/save">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Digite o nome do livro" name="title" id="title" type="text" class="validate">
+              <label for="nomeLivro">Nome do Livro:</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Descreva a sinopse do livro" name="description" id="description" type="text" class="validate">
+              <label for="sinopse">Sinopse</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Digite o nome do autor" name="author" id="author" type="text" class="validate">
+              <label for="author">Autor</label>
+            </div>
+            <div class="input-field col s6">
+              <input placeholder="Adicione o link da capa do livro" name="imageBook" id="imageBook" type="text" class="validate">
+              <label for="imageBook">Capa do livro</label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col 12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <i class="material-icons right">Cadastrar livro</i>
+                  </button>
+              </div>
+          </div>
+        
+        </form>
+      </div>
+    </div>
+        
+</body>
+
+</html>

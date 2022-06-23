@@ -1,0 +1,42 @@
+<%- include ("../partials/header.ejs") %>
+
+    <body>
+        <div class="container">
+            <h1 class="title">
+              Lista de Categorias
+          </h1>
+          <p class="subtitle">
+              Veja todas as<strong> categorias cadastradas</strong>!
+          </p>
+          <div class="row">
+            <table class="striped">
+                <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Categoria</th>
+                      <th>Slug</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                    <% categories.forEach(category => { %>
+                        <th><%= category.id %> </th>
+                        <th><%= category.nomeCategoria %> </th>
+                        <th><%= category.slug %> </th>
+                        <th>
+                            <a href="">
+                                <button class="btn btn-warning">Editar</button>
+                            </a>
+                            <form method="POST" action="" style="display:inline;">
+                                <input type="hidden" name="id" value="<%= category.id %>">
+                                <button class="btn btn-danger">Deletar</button>
+                            </form>
+                          
+                        </th>
+                    </tr>
+                <% }) %>
+                </tbody>
+              </table>
+          </div>
+    </body>
+</html>
