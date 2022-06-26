@@ -17,7 +17,7 @@ router.post("/categories/save", (req,res) => {
             nomeCategoria:nomeCategoria,
             slug: slugify(nomeCategoria)
         }).then(()=> {
-            res.render("admin/categories");
+           res.redirect("/admin/categories");
         })
     }else{
         console.log("Erro ao cadastrar uma categoria");

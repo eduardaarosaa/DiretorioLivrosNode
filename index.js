@@ -9,6 +9,7 @@ const booksController = require("./controllers/books/BookController");
 
 const app = express(); // Criando uma instancia do express
 
+
 //Importar o body-parser
 const bodyParser = require("body-parser");
 
@@ -46,10 +47,12 @@ app.get("/", (req,res)=> {
 
 app.get("/admin/category", (req,res)=>{
     res.render("admin/createCategories");
-})
+});
+
+
 app.get("/admin/book", (req,res)=>{
     res.render("admin/create-books");
-})
+});
 
 //Inicializando a aplicação
 

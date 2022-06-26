@@ -21,22 +21,24 @@
                 </thead>
         
                 <tbody>
-                    <!-- <% categories.forEach(category => { %>
-                        <th><%= category.id %> </th>
-                        <th><%= category.nomeCategoria %> </th>
-                        <th><%= category.slug %> </th> -->
+                    <% books.forEach(book => { %>
+                        <th><%= book.id %> </th>
+                        <th><img src="<%= book.imageBook %>" width="100px" </th>
+                        <th><%= book.title %> </th>
+                        <th><%= book.slug %> </th>
+                        <th><%= book.description %> </th>
+                        <th><%= book.author %> </th>
                         <th>
                             <a href="">
                                 <button class="btn btn-warning">Editar</button>
                             </a>
                             <form method="POST" action="" style="display:inline;">
-                                <!-- <input type="hidden" name="id" value="<%= category.id %>"> -->
                                 <button class="btn btn-danger">Deletar</button>
                             </form>
                           
                         </th>
                     </tr>
-                <!-- <% }) %> -->
+                    <% }) %>
                 </tbody>
               </table>
           </div>
