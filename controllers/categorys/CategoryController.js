@@ -17,11 +17,16 @@ router.post("/categories/save", (req,res) => {
             nomeCategoria:nomeCategoria,
             slug: slugify(nomeCategoria)
         }).then(()=> {
+        //    req.toastr.success('Successfully logged in.', "You're in!");
+        //    req.toast.success = true;
+
            res.redirect("/admin/categories");
         })
     }else{
-        console.log("Erro ao cadastrar uma categoria");
+        // req.toastr.error('Invalid credentials.');
     }
+
+    
 });
 
 router.get("/admin/categories", (req,res) => {

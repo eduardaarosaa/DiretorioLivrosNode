@@ -1,4 +1,10 @@
-const express = require("express");
+const express = require("express")
+,flash = require('connect-flash')
+    ,session = require('express-session')
+    ,cookieParser = require('cookie-parser')
+// express-toastr
+    ,toastr = require('express-toastr');
+
 const res = require("express/lib/response");
 const connection = require("./database/database");
 
@@ -7,8 +13,8 @@ const categoriesController  = require("./controllers/categorys/CategoryControlle
 const Book = require("./models/books/BookModel");
 const booksController = require("./controllers/books/BookController");
 
-const app = express(); // Criando uma instancia do express
 
+const app = express(); // Criando uma instancia do express
 
 //Importar o body-parser
 const bodyParser = require("body-parser");
@@ -18,6 +24,26 @@ app.use(bodyParser.urlencoded({
 })); 
 
 app.use(bodyParser.json());
+
+app.use(cookieParser('secret'));
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+app.use(flash());
+ 
+// Load express-toastr
+// You can pass an object of default options to toastr(), see example/index.coffee
+app.use(toastr());
+
+
+app.use(function (req, res, next)
+{
+    res.locals.toasts = req.toastr.render()
+    next()
+});
+
 
 //Database
 

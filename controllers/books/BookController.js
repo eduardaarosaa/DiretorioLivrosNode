@@ -36,8 +36,6 @@ router.post("/books/save", (req, res) => {
 });  
 
 router.get("/admin/books/list", (req,res)=>{
-    // let teste = Book.findAll();
-    // console.log(teste);
     Book.findAll().then(
         books => {
             res.render("admin/books", {
