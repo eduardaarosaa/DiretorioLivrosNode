@@ -17,15 +17,15 @@ router.post("/categories/save", (req,res) => {
             nomeCategoria:nomeCategoria,
             slug: slugify(nomeCategoria)
         }).then(()=> {
-        //    req.toastr.success('Successfully logged in.', "You're in!");
-        //    req.toast.success = true;
-
-           res.redirect("/admin/categories");
+      
+        req.toastr.success('Categoria salva com sucesso!');
+        res.render("admin/createCategories", {req: req});
+       
         })
     }else{
-        // req.toastr.error('Invalid credentials.');
+        req.toastr.error('Erro ao salvar a categoria.');
+        res.render("admin/createCategories", {req: req});
     }
-
     
 });
 

@@ -1,9 +1,12 @@
-const express = require("express")
-,flash = require('connect-flash')
+// ExpressJS
+var express = require('express')
+// Dependencies
+    ,flash = require('connect-flash')
     ,session = require('express-session')
     ,cookieParser = require('cookie-parser')
 // express-toastr
     ,toastr = require('express-toastr');
+
 
 const res = require("express/lib/response");
 const connection = require("./database/database");
@@ -25,6 +28,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+// Dependencies
 app.use(cookieParser('secret'));
 app.use(session({
     secret: 'secret',
@@ -32,11 +36,10 @@ app.use(session({
     resave: true
 }));
 app.use(flash());
- 
+
 // Load express-toastr
 // You can pass an object of default options to toastr(), see example/index.coffee
 app.use(toastr());
-
 
 app.use(function (req, res, next)
 {
@@ -44,9 +47,7 @@ app.use(function (req, res, next)
     next()
 });
 
-
 //Database
-
 connection.authenticate().then(()=>{
     console.log("Conexão efetuada com sucesso!");
 }).catch((error)=>{
@@ -61,6 +62,7 @@ app.set('view engine', 'ejs');
 //Configurar o  express static
 
 app.use(express.static('public'));
+
 
 
 //Routes

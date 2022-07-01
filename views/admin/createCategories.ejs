@@ -1,6 +1,8 @@
 <%- include ("../partials/header.ejs") %>
-<%= toasts %>
 <body>
+
+    <% req.toastr.render() %>
+  
     <div class="container">
       <h1 class="title">
         Cadastro de categorias
