@@ -9,24 +9,36 @@ const slugify = require("slugify");
 
 router.post("/categories/save", (req,res) => {
     var nomeCategoria = req.body.nomeCategoria;
-
-    console.log(nomeCategoria);
-
     if(nomeCategoria != undefined){
-        Category.create({
-            nomeCategoria:nomeCategoria,
-            slug: slugify(nomeCategoria)
-        }).then(()=> {
       
-        req.toastr.success('Categoria salva com sucesso!');
-        res.render("admin/createCategories", {req: req});
-       
-        })
-    }else{
-        req.toastr.error('Erro ao salvar a categoria.');
-        res.render("admin/createCategories", {req: req});
-    }
+                Category.findAll().then(categories => {
+
+                    Category.create({
+                        nomeCategoria:nomeCategoria,
+                        slug: slugify(nomeCategoria)
+                    }).then(()=> {
+            
+                console.log(req.toastr.success);
+                req.toastr.success('Categoria salva com sucesso!');
+                res.render("admin/categories", {req: req, categories:categories});
+            
+                })
+            })
+   }else{
+                req.toastr.error('Erro ao salvar a categoria.');
+                res.render("admin/createCategories", {req: req});
+   }
     
+});
+    
+    
+// });
+
+router.get("/categories/create", (req,res) => {
+    res.render("admin/createCategories", {
+        req: req
+    });
+
 });
 
 router.get("/admin/categories", (req,res) => {
@@ -37,9 +49,10 @@ router.get("/admin/categories", (req,res) => {
     });
 });
 
-// router.get("categories", (req,res)=>{
-//     res.render("admin");
-// })
+router.get("/painel", (req,res)=>{
+    res.render("admin/painel");
+});
+
 
 module.exports = router;
 

@@ -1,5 +1,8 @@
 <%- include ("../partials/header.ejs") %>
      <body>
+         <% if(req){ %>
+         <%- req.toastr.render() %>
+         <% } %>
         <div class="container">
             <h1 class="title">
               Lista de Categorias
