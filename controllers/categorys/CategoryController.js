@@ -44,7 +44,7 @@ router.get("/categories/create", (req,res) => {
 router.get("/admin/categories", (req,res) => {
     Category.findAll().then(categories => {
         res.render("admin/categories", {
-            categories: categories
+            categories: categories , req:req
         });
     });
 });
